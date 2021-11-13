@@ -31,7 +31,7 @@ public class StartPage {
     final static public SelenideElement quantityQuickViewBInput = $(By.cssSelector("input#quantity_wanted"));
     final static public SelenideElement addToCartQuickViewButton = $(By.cssSelector("button.exclusive"));
 
-    static public void showCartDropdown() {
+    public static void showCartDropdown() {
         cartButton.scrollIntoView(true).hover();
     }
 
