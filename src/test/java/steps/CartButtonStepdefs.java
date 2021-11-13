@@ -61,8 +61,7 @@ public class CartButtonStepdefs {
 
     @And("I click remove product from cart dropdown")
     public void iClickRemoveProductFromCartDropdown() {
-        showCartDropdown();
-        cardBlockRemoveButtons.get(0).click();
+        clearCart();
     }
 
     @When("^I add (\\d).+ product to cart with quick view button$")
