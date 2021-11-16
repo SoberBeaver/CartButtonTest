@@ -14,7 +14,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static pages.StartPage.*;
 import static pages.OrderPage.*;
 
-public class CartButtonStepdefs {
+public class CartButtonStepDefs {
 
     @BeforeAll
     public static void setBrowserConfig(){
@@ -35,6 +35,7 @@ public class CartButtonStepdefs {
     @And("Cart is empty")
     public void cartIsEmpty() {
         cartNoProduct.shouldBe(visible);
+        Assert.assertTrue(cartNoProduct.isDisplayed());
     }
 
     @When("I click on cart button")
@@ -44,7 +45,7 @@ public class CartButtonStepdefs {
 
     @Then("I see the empty Shopping-cart summary page")
     public void iSeeTheEmptyShoppingCartSummaryPage() {
-        cartIsEmptyMessage.click();
+        Assert.assertTrue(cartIsEmptyMessage.isDisplayed());
     }
 
     @When("I add product to cart")
@@ -56,7 +57,7 @@ public class CartButtonStepdefs {
     @Then("Added product should be visible in cart dropdown")
     public void addedProductShouldBeVisibleInCartDropdown() {
         showCartDropdown();
-        cardBlockProducts.get(0).should(visible);
+        Assert.assertTrue(cardBlockProducts.get(0).isDisplayed());
     }
 
     @And("I click remove product from cart dropdown")
