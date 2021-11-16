@@ -22,6 +22,7 @@ public class StartPage {
     static public ElementsCollection productAddButtons = $$(By.cssSelector("a.ajax_add_to_cart_button"));
 
     static public SelenideElement continueShoppingButton = $(By.cssSelector("span[title=\"Continue shopping\"]"));
+    static public SelenideElement proceedToCheckoutButton = $(By.cssSelector("a[title=\"Proceed to checkout\"]"));
 
     static public ElementsCollection cardBlockProducts = $$(By.cssSelector("div.cart_block a.cart_block_product_name"));
     static public ElementsCollection cardBlockRemoveButtons = $$(By.cssSelector("a.ajax_cart_block_remove_link"));

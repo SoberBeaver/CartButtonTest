@@ -34,3 +34,15 @@ Feature: Cart button
       |    2      |   6       |    8           |
       |    7      |   3       |    10          |
 
+  Scenario: Cart is empty after complete checkout
+    When I add product to cart
+    And I click proceed to checkout button
+    And I click proceed to checkout button at order page
+    And I enter email
+    And I enter password
+    And I click sing in button
+    And I confirm address clicking on proceed to checkout button
+    And I click on terms of service check box and proceed to checkout button
+    And I click pay by bank wire button
+    And I confirm order
+    Then Cart is empty

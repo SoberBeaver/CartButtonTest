@@ -8,6 +8,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import config.UserConfig;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -16,10 +17,12 @@ import static pages.OrderPage.*;
 
 public class CartButtonStepDefs {
 
+    UserConfig user = new UserConfig();
+
     @BeforeAll
     public static void setBrowserConfig(){
         Configuration.browser = "chrome";
-        Configuration.timeout = 4000;
+        Configuration.timeout = 10000;
     }
 
     @After
@@ -96,5 +99,51 @@ public class CartButtonStepDefs {
     @Then("Check product counter on cart button is {int}")
     public void checkProductCounterOnCartButtonIsProductCounter(int productCounter) {
         Assert.assertEquals(getCartProductCounter(), productCounter);
+    }
+
+    @And("I click proceed to checkout button")
+    public void iClickProceedToCheckoutButton() {
+        proceedToCheckoutButton.shouldBe(visible).click();
+    }
+
+    @And("I click proceed to checkout button at order page")
+    public void iClickProceedToCheckoutButtonAtOrderPage() {
+        proceedToCheckoutOrderPageButton.shouldBe(visible).click();
+    }
+
+    @And("I enter email")
+    public void iEnterEmail() {
+        emailInput.shouldBe(visible).setValue(user.getUserEmail());
+    }
+
+    @And("I enter password")
+    public void iEnterPassword() {
+        passwordInput.setValue(user.getUserPassword());
+    }
+
+    @And("I click sing in button")
+    public void iClickSingInButton() {
+        signInButton.click();
+    }
+
+    @And("I confirm address clicking on proceed to checkout button")
+    public void iConfirmAddressClickingOnProceedToCheckoutButton() {
+        proceedToCheckoutAprocessAddressButton.shouldBe(visible).click();
+    }
+
+    @And("I click on terms of service check box and proceed to checkout button")
+    public void iClickOnTermsOfServiceCheckBoxAndProceedToCheckoutButton() {
+        termsOfServiceCheckbox.click();
+        proceedToCheckoutprocessCarrierButton.click();
+    }
+
+    @And("I click pay by bank wire button")
+    public void iClickPayByBankWireButton() {
+        payBankWireButton.shouldBe(visible).click();
+    }
+
+    @And("I confirm order")
+    public void iConfirmOrder() {
+        iConfirmMyOrderButton.shouldBe(visible).click();
     }
 }
